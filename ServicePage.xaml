@@ -9,7 +9,43 @@
       Title="ServicePage">
 
     <Grid>
-        <ListView Name="ServiceListView" >
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <TextBox Name="TBSearch" Width="200" Height="50" Margin="5" TextChanged="TBSearch_TextChanged" FontSize="18"></TextBox>
+            <ComboBox Name="SortCombo" SelectionChanged="SortCombo_SelectionChanged" Width="120"  Margin="5">
+                <TextBlock Text="наим по возр"></TextBlock>
+                <TextBlock Text="наим по убыв"></TextBlock>
+                <TextBlock Text="скидка по возр"></TextBlock>
+                <TextBlock Text="скидка по убыв"></TextBlock>
+                <TextBlock Text="приоритет по возр"></TextBlock>
+                <TextBlock Text="приоритет по убыв"></TextBlock>
+            </ComboBox>
+
+            <ComboBox Name="FilterCombo" SelectionChanged="FilterCombo_SelectionChanged" Width="120" Margin="5">
+                <TextBlock Text="Все"></TextBlock>
+                <TextBlock Text="МФО"></TextBlock>
+                <TextBlock Text="ЗАО"></TextBlock>
+                <TextBlock Text="МКК"></TextBlock>
+                <TextBlock Text="ОАО"></TextBlock>
+                <TextBlock Text="ПАО"></TextBlock>
+
+
+            </ComboBox>
+
+
+        </StackPanel>
+
+
+
+
+        <ListView Name="ServiceListView" Grid.Row="2" SelectionChanged="ServiceListView_SelectionChanged" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -23,22 +59,36 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Image Width="100" Grid.Column="0" Stretch="UniformToFill" HorizontalAlignment="Center">
+
+
+
+
+
+                        <Image Width="128" Grid.Column="0" Grid.RowSpan="10" Stretch="UniformToFill" HorizontalAlignment="Center">
                             <Image.Source>
-                                <Binding Path="MainImagePath">
+                                <Binding Path="Logo">
                                     <Binding.TargetNullValue>
                                         <ImageSource>
                                             res/picture.png
                                         </ImageSource>
                                     </Binding.TargetNullValue>
-
                                 </Binding>
                             </Image.Source>
                         </Image>
+                        
+                        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal"  >
+                            <TextBlock Text="{Binding AgentTypeString}" FontSize="20"></TextBlock>
+                            <TextBlock Text=" | "  FontSize="20" />
+                            <TextBlock Text="{Binding Title}" FontSize="20" ></TextBlock>
 
-                        <TextBlock Text="{Binding Title}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20" TextWrapping="Wrap"></TextBlock>
-                        <TextBlock Text="{Binding Phone}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" FontSize="20"></TextBlock>
-                        <TextBlock Text="{Binding Priority}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" FontSize="20"></TextBlock>
+
+                            </StackPanel>
+
+                        
+                        
+                        <TextBlock Text="{Binding Phone}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" FontSize="20"></TextBlock>
+
+                        <TextBlock Text="{Binding Priority, StringFormat=Приоритетность: {0}}" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" FontSize="20"></TextBlock>
                         <TextBlock Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" FontSize="16"></TextBlock>
 
 
@@ -46,9 +96,9 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
 
 
+     
 
     </Grid>
 </Page>
