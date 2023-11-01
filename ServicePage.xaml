@@ -17,9 +17,31 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <TextBlock Name="TBCount" FontSize="20" Height="20"></TextBlock>
+            <TextBlock Name="TBAllRecords" FontSize="20" Height="20"></TextBlock>
+            <Button Name="LeftDirButton" Content="&lt;" Width="20" Height="20" Click="LeftDirButton_Click"></Button>
+            <ListBox FontSize="20" Name="PageListBox" MouseUp="PageListBox_MouseUp">
+                <ListBox.ItemsPanel>
+
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+               
+                
+               
+            </ListBox>
+            <Button Name="RightDirButton" Content="&gt;" Width="20" Height="20" Click="RightDirButton_Click"></Button>
+            
+        </StackPanel>
+        
+       
+        
+
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <TextBox Name="TBSearch" Width="200" Height="50" Margin="5" TextChanged="TBSearch_TextChanged" FontSize="18"></TextBox>
-            <ComboBox Name="SortCombo" SelectionChanged="SortCombo_SelectionChanged" Width="120"  Margin="5">
+            <ComboBox Name="SortCombo" SelectionChanged="SortCombo_SelectionChanged" Width="120"  Margin="5" >
                 <TextBlock Text="наим по возр"></TextBlock>
                 <TextBlock Text="наим по убыв"></TextBlock>
                 <TextBlock Text="скидка по возр"></TextBlock>
@@ -34,13 +56,17 @@
                 <TextBlock Text="ЗАО"></TextBlock>
                 <TextBlock Text="МКК"></TextBlock>
                 <TextBlock Text="ОАО"></TextBlock>
+                <TextBlock Text="ООО"></TextBlock>
                 <TextBlock Text="ПАО"></TextBlock>
+                
 
 
             </ComboBox>
 
 
         </StackPanel>
+
+       
 
 
 
@@ -60,22 +86,24 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-
-
-
-
-                        <Image Width="128" Grid.Column="0" Grid.RowSpan="10" Stretch="UniformToFill" HorizontalAlignment="Center">
+                        <Image Width="200" Grid.Column="0" Grid.RowSpan="10" Stretch="UniformToFill" HorizontalAlignment="Center">
                             <Image.Source>
                                 <Binding Path="Logo">
                                     <Binding.TargetNullValue>
                                         <ImageSource>
-                                            res/picture.png
+                                            res\picture.png
                                         </ImageSource>
                                     </Binding.TargetNullValue>
                                 </Binding>
                             </Image.Source>
                         </Image>
-                        
+
+
+
+
+
+
+
                         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal"  >
                             <TextBlock Text="{Binding AgentTypeString}" FontSize="20"></TextBlock>
                             <TextBlock Text=" | "  FontSize="20" />
