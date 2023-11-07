@@ -62,6 +62,7 @@
 
 
             </ComboBox>
+            <Button Content="Добавить агента" Name="AddButton" Click="AddButton_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom"></Button>
 
 
         </StackPanel>
@@ -114,10 +115,19 @@
 
                         
                         
-                        <TextBlock Text="{Binding Phone}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" FontSize="20"></TextBlock>
+                        
+                        <StackPanel Grid.Row="2" Grid.Column="3">
+                            <TextBlock Text="{Binding Priority, StringFormat=Приоритетность: {0}}"  HorizontalAlignment="Left" FontSize="20"></TextBlock>
+                            <TextBlock Text="{Binding Phone}"  HorizontalAlignment="Left" FontSize="20"></TextBlock>
 
-                        <TextBlock Text="{Binding Priority, StringFormat=Приоритетность: {0}}" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" FontSize="20"></TextBlock>
-                        <TextBlock Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" FontSize="16"></TextBlock>
+                        </StackPanel>
+                        
+
+                        
+                        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal">
+                            <Button Name="EditBtn"   Content="Редактировать" Margin="10" Click="EditBtn_Click"></Button>
+                        </StackPanel>
+                        
 
 
                     </Grid>
