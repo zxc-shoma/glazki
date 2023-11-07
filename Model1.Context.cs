@@ -19,12 +19,12 @@ namespace garipov_glazki
             : base("name=Garipov_glazkiEntities")
         {
         }
-
         private static Garipov_glazkiEntities _context;
         public static Garipov_glazkiEntities GetContext()
         {
             if (_context == null)
                 _context = new Garipov_glazkiEntities();
+
             return _context;
         }
 
@@ -46,5 +46,8 @@ namespace garipov_glazki
         public virtual DbSet<ProductType> ProductType { get; set; }
         public virtual DbSet<Shop> Shop { get; set; }
         public virtual DbSet<Supplier> Supplier { get; set; }
+
+       
+
     }
 }

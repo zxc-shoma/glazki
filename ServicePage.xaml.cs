@@ -48,11 +48,11 @@ namespace garipov_glazki
             UpdateAgents();
         }
 
-        //private void Button_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Manager.MainFrame.Navigate(new AddEditPage()));
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddEditPage());
 
-        //}
+        }
 
         private void TBSearch_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
@@ -215,7 +215,6 @@ namespace garipov_glazki
 
 
             ServiceListView.ItemsSource = currentAgents;
-            ServiceListView.Items.Refresh();
 
             TableList = currentAgents;
             ChangePage(0, 0);
@@ -258,20 +257,5 @@ namespace garipov_glazki
         {
             ChangePage(0, Convert.ToInt32(PageListBox.SelectedItem.ToString()) - 1);
         }
-
-        private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            Manager.MainFrame.Navigate(new AddEditPage(null));
-            UpdateAgents();
-
-        }
-
-        private void EditBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Manager.MainFrame.Navigate(new AddEditPage((sender as Button).DataContext as Agent));
-            UpdateAgents();
-        }
-
-      
     }
 }
